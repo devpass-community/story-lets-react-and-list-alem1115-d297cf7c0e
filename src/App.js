@@ -11,8 +11,8 @@ const Item = ({ item }) => {
       <span> {item.brand} </span>
       <span> {item.price} </span>
     </li>
-  );
-};
+  )
+}
 
 function App() {
   return (
