@@ -1,28 +1,29 @@
 import Container from "./components/Container";
-import products from "/products.json"; 
+import products from "./products.json";
 
-function Item({ item }) {
-    return (
-        <li className="item" data-testid="product-item">
-            {products}
-            <img src="thumbnail here"></img>
-            <h4> title here </h4>
-            <p> description here </p>
-            <span> brand here </span>
-            <span> price here </span>
-        </li>
-    );
-}
+const Item = ({ item }) => {
+  return (
+    <li className="item" data-testid="product-item">
+      {}
+      <img src={item.images[0]}></img>
+      <h4> {item.title} </h4>
+      <p> {item.description}</p>
+      <span> {item.brand} </span>
+      <span> {item.price} </span>
+    </li>
+  );
+};
 
 function App() {
-    return (
-        <Container>
-            <ul className="list" data-testid="product-list">
-                {/* TODO */}
-                <Item />
-            </ul>
-        </Container>
-    );
+  return (
+    <Container>
+      <ul className="list" data-testid="product-list">
+        {products.filter((product => product.category.match("smartphone"))).map((product) => (
+          <Item key={product.id} item={product} />
+        ))}    
+      </ul>
+    </Container>
+  );
 }
 
 export default App;
